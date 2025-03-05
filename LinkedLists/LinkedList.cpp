@@ -102,6 +102,7 @@ string LinkedList::removeHead()
         }
     }else{ // print error message
         cout << "Cannot remove head of empty linked list!" << endl;
+        return "";
     }
 }
 
@@ -133,6 +134,7 @@ string LinkedList::removeTail()
         }
     }else{ // print error message
         cout << "Cannot remove tail of empty linked list!" << endl;
+        return "";
     }
 }
 
