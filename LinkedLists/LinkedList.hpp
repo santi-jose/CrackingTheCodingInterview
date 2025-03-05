@@ -14,6 +14,7 @@ private:
     string data = "";
 
 public:
+    // constructor
     Node(string data)
     {
         this->data = data;
