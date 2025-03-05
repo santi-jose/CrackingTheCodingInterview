@@ -165,6 +165,8 @@ void LinkedList::printLinkedList(bool forward)
             if (cur != nullptr)
             {                 // if the cursor does not point to nullptr
                 cout << "->"; // print pointer to next node
+            }else{
+                cout << endl;
             }
         }
     }
@@ -179,6 +181,8 @@ void LinkedList::printLinkedList(bool forward)
             if (cur != nullptr)
             {                 // if the cursor does not point to nullptr
                 cout << "->"; // print pointer to next node
+            }else{
+                cout << endl;
             }
         }
     }
