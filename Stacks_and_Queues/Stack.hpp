@@ -12,6 +12,7 @@ class Stack{
         void push(string data); // add an item to the top of the stack
         string peek(); // return the data at the top of the stack
         bool isEmpty(); // return true if and only if the stack is empty
+        void printStack(); // print the stack top to bottom
 };
 
 #endif

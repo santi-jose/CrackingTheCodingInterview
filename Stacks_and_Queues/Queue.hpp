@@ -12,6 +12,7 @@ class Queue{
         string remove(); // remove the first item in the list
         string peek(); // peek at the value at the front of the list
         bool isEmpty(); // return true if an d only i the queue is empty
+        void printQueue(); // print the Queue front -> back
 };
 
 #endif
