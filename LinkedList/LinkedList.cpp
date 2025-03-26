@@ -68,6 +68,25 @@ void LinkedList::insertTail(string data)
     this->length++; // increment lnked list length variable
 }
 
+// access functions
+string LinkedList::returnHData(){
+    // if the LinkedList is not empty
+    if(!(this->isEmpty())){ // if the LInkedList is not empty
+        return this->head->getData(); // return data at head node
+    }else{
+        return "<EMPTY>"; // return string denoting an empty list
+    }
+}
+
+string LinkedList::returnTData(){
+    // if the LinkedList is not empty
+    if(!(this->isEmpty())){
+        return this->tail->getData();
+    }else{
+        return "<EMPTY"; // return string denoting an empty list
+    }
+}
+
 // removal functions
 string LinkedList::removeHead()
 {

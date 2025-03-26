@@ -53,6 +53,10 @@ public:
     string removeHead();
     string removeTail();
 
+    // access functions
+    string returnHData(); 
+    string returnTData(); 
+
     // empty checker
     bool isEmpty();
 
