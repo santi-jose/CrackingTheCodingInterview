@@ -8,6 +8,8 @@ class Stack{
         LinkedList* list; // list to store for stack
 
     public:
+        Stack(); // Stack constructor
+        ~Stack(); // stack destructor
         string pop(); // remove the top item from the stack
         void push(string data); // add an item to the top of the stack
         string peek(); // return the data at the top of the stack

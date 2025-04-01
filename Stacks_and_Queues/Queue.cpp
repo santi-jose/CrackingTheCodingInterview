@@ -5,6 +5,14 @@
 
 using namespace std;
 
+Queue::Queue(){
+    this->list = new LinkedList();
+}
+
+Queue::~Queue(){
+    delete this->list;
+}
+
 void Queue::add(string data){
     // add node with input string data at end of queue
     this->list->insertTail(data);

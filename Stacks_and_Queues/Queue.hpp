@@ -8,6 +8,8 @@ class Queue{
         LinkedList* list; // list to store for queue
 
     public:
+        Queue(); // Queue constructor
+        ~Queue(); // Queue destructor
         void add(string data); // Add an item to the end of the list
         string remove(); // remove the first item in the list
         string peek(); // peek at the value at the front of the list

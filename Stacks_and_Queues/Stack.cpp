@@ -5,6 +5,15 @@
 
 using namespace std;
 
+Stack::Stack(){
+    this->list = new LinkedList();
+    cout << "Stack constructor: list initialized at " << list << endl;
+}
+
+Stack::~Stack(){
+    delete this->list;
+}
+
 string Stack::pop(){
     // remove the top of the stack
     // and return the value at the top of the stack
