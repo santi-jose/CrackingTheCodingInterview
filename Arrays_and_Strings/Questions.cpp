@@ -137,6 +137,89 @@ bool checkPermutation(string str1, string str2){
     return true;
 }
 
+// 3. URLify
+// Write a method to replace all spaces in a string with '%20'. You may 
+// assume that the string has sufficient space at the end to hold the 
+// additional characters, and that you are given the "true" length
+// of the string. 
+// Ex: 
+// in: "Mr John Smith", 13
+// out: "Mr%20John%20Smith"
+
+// Parameters:
+//  a string, and the length of the string
+// Returns:
+//  a string, which has replaced the spaces w8the '%20'
+
+// Examples:
+//  in: "how should this work?", 21
+//  out: "how%20should%20this%20work?"
+//  -> if we want to use the input string for a URL, then I assume
+//  we only need to replace the spaces between other characters in
+//  the string and we can trim off any leading or trailing spaces.
+// in: "    I think like this    ", 25
+// out: "I%20think%20like%20this"
+//  -> we will have to figure out how to check for empty spaces in the
+// string. Will a simple equality check work? 
+//  -> we will also have to find out how to iterate through the string.
+//  in C++ this shouldn't be an issue, so I don't believe we need
+//  length as an input.
+
+// Pseudocode:
+//  if there is leading white space
+//      iterate to first character in string
+//  for all characters in input string
+//      if we encounter a space
+//          iterate through spaces
+//          count length of spaces
+//          if we reach a character
+//              swap spaces with string %20
+//          if we reach end of string, return string
+
+// 
+string URLify(string in){
+    int i = 0; // index for leading white space check
+    while(in[i] == ' '){ // iterate through white spaces
+        // cout << "Iterating through leading white spaces." << endl;
+        i++; // increment white space iterator
+    }
+
+    string rep_str = "%20"; // string to replace white space with
+    string out = ""; // string to store outpu string
+
+    // iterate through characters in string
+    for(int j = i; j < in.length(); j++){
+        // cout << "Value at index j: " << in[j] << endl;
+
+        // if we encounter a white space
+        if(in[j] == ' '){
+            // cout << "We found a space!" << endl;
+
+            // int space_length = 0; // track length of spaces
+            int k = j; // start at index of first white space appearance
+            // iterate through spaces
+            while((in[k] == ' ') and (in[k] != '\0')){ // while we are at 
+                // white space, and have yet to reach the end of the string
+                // space_length++; // increment space length
+                k++; // increment space index
+                // cout << "Counting spaces found. Space length: " << space_length << endl;
+            }
+
+            // if we reached the end of the string
+            if(in[k] == '\0'){
+                // return output string out
+                return out;
+            }else{ // else we reached the next char
+                out+=rep_str; // append the replacement string
+                // cout << "in after replace: " << in << endl;
+                // cout << "out after append replacement: " << out << endl;
+            }
+        }else{ // we have a character, append it to the output string
+            out+=in[j];
+        }
+    }
+    return out;
+}
 
 int main()
 {
@@ -197,6 +280,12 @@ int main()
     cout << "test3: " << test3 << endl;
     cout << "test5: " << test5 << endl;
 
+    // test URLify
+    string test7 = "Does this work?";
+    cout << URLify(test7) << endl;
+
+    string test8 = "    What about with leading and trailing spaces?    ";
+    cout << URLify(test8) << endl;
 
     return 0;
 }
