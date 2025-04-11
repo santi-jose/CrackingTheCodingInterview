@@ -221,6 +221,69 @@ string URLify(string in){
     return out;
 }
 
+// 4. Palindrome Permutation
+// Given a string, write a function to check if it is a permutation of a 
+// palindrome. A palindrome is a word or phrase that is the same forwards 
+// and backwards. A permutation is a rearrangement of letters. The 
+// palindrome does not need to be limited to dictionary words.
+
+// Ex: //
+// in: Tact coa
+// out: True (permutations: "taco cat", "atco cta", etc.)
+
+// Parameters: input string to be checked for permutations
+
+// Returns: a boolean of true or false to determine whether or not 
+// the input string contains a permutation fo a palindrome.
+
+// Examples:
+//  in: rrcacea
+//  out: true (racecar, arcecra, ...)
+
+// in: nnooaa
+// out: true (noaaon, onaano, ...)
+
+//  -> after looking at these examples I found a pattern with this problem.
+//  if a string is to be rearranged into a palindrome, they need meet
+// one of two conditions.
+// if the length of the string is odd, all characters except one
+// need to have an even number of occurences in the string.
+// if the length of the string is even, all characters need to 
+// have an even number of occurences in the string.
+// To fulfill this, we can use an array to keep track of the occurences of
+// a character. After counting all occurences, 
+
+bool checkPalindromePermutation(string in){
+    // array to store char appearances in string
+    int char_count[26] = {0};
+
+    // iterate through input string
+    for(int i = 0; i < in.length(); i++){
+        // if we have a non-space char
+        if(in[i] != ' '){
+            int bank_i = in[i] - 'a'; // define bank index
+            char_count[bank_i]++; // increment count of char using char bank
+        }
+    }
+
+    // iterate through the char_count array
+    // if the count of characters has more than one odd value
+    // we know we don't have a palindrome permutationo
+    // therefore we return false
+    int odd_count = 0; // initialize odd count variable to 0
+    for(int j = 0; j < 26; j++){
+        // if we don't have an even value
+        if((char_count[j] % 2) != 0){
+            odd_count++; // increment the odd character count
+        }
+        if(odd_count > 1){ // if the count of odd characters is greater
+            // than one
+            return false; // return false
+        }
+    } // we exit the iteration with only one odd count or less
+    return true; // return true
+}
+
 int main()
 {
     // test isUnique() implementation
@@ -286,6 +349,21 @@ int main()
 
     string test8 = "    What about with leading and trailing spaces?    ";
     cout << URLify(test8) << endl;
+
+    // test Palindrome permutation
+    string test9 = "atco cta";
+
+    if(checkPalindromePermutation(test9) == true){
+        cout << "Test Passed. string test9 is a permutation of a palindrome" << endl;
+    }else{
+        cout << "Test Failed. string test9 is a permutation of a palindrome." << endl;
+    }
+
+    if(checkPalindromePermutation(test5)){
+        cout << "Test Failed. string test5 is not a permutation of a palindrome." << endl;
+    }else{
+        cout << "Test Passed. string test5 is not a permutation of a palindrome." << endl;
+    }
 
     return 0;
 }
